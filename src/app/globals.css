@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Aladin&family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap&family=Sacramento&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --text-primary-light: #ddd;
+  --text-primary-dark: #333333;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
+body {
+  color: var(--text-primary-dark);
+  /* background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)); */
+  font-family: "Cormorant Garamond", serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-poppins {
+    font-family: "Poppins", sans-serif;
+  }
+
+  .font-aladin {
+    font-family: "Aladin", system-ui;
+  }
+
+  .font-sacramento {
+    font-family: "Sacramento", "Lucida Sans", "Lucida Sans Regular",
+      "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+
+  .filter-white {
+    filter: invert(99%) sepia(29%) saturate(497%) hue-rotate(254deg)
+      brightness(111%) contrast(100%);
+  }
+
+  .portfolio-bg-gradient {
+    background: linear-gradient(
+      180deg,
+      rgba(219, 173, 199, 0.36) 0%,
+      rgba(14, 127, 165, 0.19) 50%,
+      rgba(255, 255, 255, 0.52) 100%
+    );
+  }
+}
