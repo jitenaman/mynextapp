@@ -33,20 +33,10 @@ function About() {
             placeholder="john@example.com"
           />
         </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-600">Message</label>
-          <textarea
-            rows="4"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Your message..."
-          ></textarea>
-        </div>
-
+ 
         <button
           type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md"
-        >
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">
           Send Message
         </button>
       </form>
