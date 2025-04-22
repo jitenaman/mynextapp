@@ -1,11 +1,42 @@
 "use client";
-import { motion } from "framer-motion";
-import React from "react";
+import { motion } from "framer-motion"; 
+import React, { useState } from "react";
 import { fadeIn, opacity } from "../framer-variants";
 import CustomImage from "../PortfolioSections/CustomImage";
 import { aboutSectionContent } from "@/Constants/about";
 
 function About() {
+const [formData, setFormData] = useState({ name: "", email: "" });
+  const [status, setStatus] = useState("");
+
+const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Sending...");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await res.json();
+      if (res.ok) {
+        setStatus(result.message || "Form submitted successfully!");
+        setFormData({ name: "", email: "" });
+      } else {
+        setStatus("Submission failed.");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("An error occurred.");
+    }
+  };
+  
   return (
     <section id="about" className="px-2 md:px-6 xl:my-20">
       <div>
@@ -13,34 +44,46 @@ function About() {
 
 
 <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <form className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4">
-        <h2 className="text-2xl font-bold text-gray-700">Contact Us</h2>
+  <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4">
+    <h2 className="text-2xl font-bold text-gray-700">Contact Us</h2>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-600">Name</label>
-          <input
-            type="text"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="John Doe"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-600">Email</label>
-          <input
-            type="email"
-            className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="john@example.com"
-          />
-        </div>
- 
-        <button
-          type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">
-          Send Message
-        </button>
-      </form>
+    <div>
+      <label className="block text-sm font-medium text-gray-600">Name</label>
+      <input
+        type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="John Doe"
+        required
+      />
     </div>
+
+    <div>
+      <label className="block text-sm font-medium text-gray-600">Email</label>
+      <input
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="john@example.com"
+        required
+      />
+    </div>
+
+    <button
+      type="submit"
+      className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md"
+    >
+      Send Message
+    </button>
+
+    {status && <p className="text-sm text-center text-green-600">{status}</p>}
+  </form>
+</div>
+
 
 
 
