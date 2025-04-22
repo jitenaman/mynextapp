@@ -38,11 +38,11 @@ function Footer() {
               <p>Connect with India&apos;s Best</p>
               <a
                 className="font-semibold"
-                href="mailto:weddingcompanydelhi23@gmail.com"
+                href="mailto:test@gmail.com"
               >
                 {footerContent?.contacts?.email ?? ""}
               </a>
-              {/* <p>weddingcompanydelhi23@gmail.com</p> */}
+               
               <p className="font-semibold">
                 {footerContent?.contacts?.mobile ?? ""}
               </p>
@@ -50,12 +50,12 @@ function Footer() {
           </div>
 
           <div className="font-poppins text-sm w-fit">
-            <p className="">Wedding Company Delhi</p>
+            <p className="">Company Delhi</p>
             <div className="pt-4 flex gap-4 text-xs font-light text-white/80 items-center justify-around">
               <a
                 href={
                   footerContent?.socialLinks?.instagram ??
-                  "https://www.instagram.com/weddingcompanydelhi/"
+                  "https://www.instagram.com/"
                 }
               >
                 <BsInstagram className="w-6 h-6" />
@@ -63,7 +63,7 @@ function Footer() {
               <a
                 href={
                   footerContent?.socialLinks?.youtube ??
-                  "https://www.youtube.com/@weddingcompanydelhi"
+                  "https://www.youtube.com/"
                 }
               >
                 <FiYoutube className="w-7 h-7" />
@@ -71,7 +71,7 @@ function Footer() {
               <a
                 href={
                   footerContent?.socialLinks?.threads ??
-                  "https://www.threads.net/@weddingcompanydelhi"
+                  "https://www.threads.net/"
                 }
               >
                 <BsThreads className="w-7 h-7" />
@@ -79,7 +79,7 @@ function Footer() {
               <a
                 href={
                   footerContent?.socialLinks?.facebook ??
-                  "https://www.facebook.com/WeddingCompanyDelhi/"
+                  "https://www.facebook.com/"
                 }
               >
                 <CiFacebook className="w-7 h-7" />
@@ -93,10 +93,10 @@ function Footer() {
         className="w-full flex flex-col pb-5 justify-center items-center gap-2 mt-8 text-sm |
        md:justify-around md:flex-row"
       >
-        <p className="">@2025 Wedding Company Delhi. All rights Reserved</p>
+        <p className="">............</p>
         <p className="">
-          Designed & Developed By <a className="underline">Vipin</a> &{" "}
-          <a className="underline">Siju</a>
+          Designed & Developed By <a className="underline">Testing</a> &{" "}
+          <a className="underline">Jitu</a>
         </p>
       </div>
     </footer>
