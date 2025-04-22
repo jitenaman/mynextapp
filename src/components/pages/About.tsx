@@ -6,7 +6,7 @@ import CustomImage from "../PortfolioSections/CustomImage";
 import { aboutSectionContent } from "@/Constants/about";
 
 function About() {
-const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", concern: "", requestFrom :"Contact Us" });
   const [status, setStatus] = useState("");
 
 const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +27,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     const result = await res.json();
     if (res.ok) {
       setStatus(result.message || "Form submitted successfully!");
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", concern: "", requestFrom :"Contact Us" });
     } else {
       setStatus("Submission failed.");
     }
@@ -89,8 +89,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       <label className="block text-sm font-medium text-gray-600">Message</label>
       <input
         type="text"
-        name="message"
-        value={formData.message}
+        name="concern"
+        value={formData.concern}
         onChange={handleChange}
         className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         placeholder="Test Message"
