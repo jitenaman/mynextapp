@@ -6,7 +6,7 @@ import CustomImage from "../PortfolioSections/CustomImage";
 import { aboutSectionContent } from "@/Constants/about";
 
 function About() {
-const [formData, setFormData] = useState({ name: "", email: "" });
+const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
   const [status, setStatus] = useState("");
 
 const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,8 +17,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   setStatus("Sending...");
 
-  try {
-    const res = await fetch("/api/contact", {
+  try {    
+    const res = await fetch("https://apidocs.womenlisted.com/api/contactEnquiry", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -27,7 +27,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     const result = await res.json();
     if (res.ok) {
       setStatus(result.message || "Form submitted successfully!");
-      setFormData({ name: "", email: "" });
+      setFormData({ name: "", email: "", phone: "", message: "" });
     } else {
       setStatus("Submission failed.");
     }
@@ -69,6 +69,31 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         onChange={handleChange}
         className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         placeholder="john@example.com"
+        required
+      />
+    </div>
+
+     <div>
+      <label className="block text-sm font-medium text-gray-600">Phone</label>
+      <input
+        type="text"
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+        className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="6767767676"
+        required
+      />
+    </div>
+     <div>
+      <label className="block text-sm font-medium text-gray-600">Message</label>
+      <input
+        type="text"
+        name="message"
+        value={formData.message}
+        onChange={handleChange}
+        className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Test Message"
         required
       />
     </div>
