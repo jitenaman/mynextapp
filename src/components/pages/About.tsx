@@ -9,33 +9,33 @@ function About() {
 const [formData, setFormData] = useState({ name: "", email: "" });
   const [status, setStatus] = useState("");
 
-const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus("Sending...");
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setStatus("Sending...");
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" }, 
-        body: JSON.stringify(formData),
-      });
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
 
-      const result = await res.json();
-      if (res.ok) {
-        setStatus(result.message || "Form submitted successfully!");
-        setFormData({ name: "", email: "" });
-      } else {
-        setStatus("Submission failed.");
-      }
-    } catch (error) {
-      console.error(error);
-      setStatus("An error occurred.");
+    const result = await res.json();
+    if (res.ok) {
+      setStatus(result.message || "Form submitted successfully!");
+      setFormData({ name: "", email: "" });
+    } else {
+      setStatus("Submission failed.");
     }
-  };
+  } catch (error) {
+    console.error(error);
+    setStatus("An error occurred.");
+  }
+};
   
   return (
     <section id="about" className="px-2 md:px-6 xl:my-20">
