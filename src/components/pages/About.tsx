@@ -9,6 +9,52 @@ function About() {
   return (
     <section id="about" className="px-2 md:px-6 xl:my-20">
       <div>
+
+
+
+<div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <form className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md space-y-4">
+        <h2 className="text-2xl font-bold text-gray-700">Contact Us</h2>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-600">Name</label>
+          <input
+            type="text"
+            className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="John Doe"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-600">Email</label>
+          <input
+            type="email"
+            className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="john@example.com"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-gray-600">Message</label>
+          <textarea
+            rows="4"
+            className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Your message..."
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md"
+        >
+          Send Message
+        </button>
+      </form>
+    </div>
+
+
+
+        
         <div className="text-[#981A1A] font-bold text-2xl flex flex-row gap-2 justify-center items-center lg:text-3xl xl:text-4xl xl:pb-10">
           <motion.div
             variants={fadeIn("up", 0.2, 50)}
